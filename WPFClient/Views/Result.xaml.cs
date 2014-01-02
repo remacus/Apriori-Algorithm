@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using AprioriAlgorithm;
 using System.ComponentModel.Composition;
 
@@ -16,6 +17,13 @@ namespace WPFClient
         {
             this.DataContext = output;
             this.ShowDialog();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }
